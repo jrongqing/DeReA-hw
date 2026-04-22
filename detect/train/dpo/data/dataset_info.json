@@ -1,0 +1,12 @@
+{
+    "dpo_data": {
+    "file_name": "slang/detect/train/dpo/data/detect_dpo_simple_train.json",
+    "ranking": true,
+    "columns": {
+        "prompt": "instruction",
+        "chosen": "chosen",
+        "rejected": "rejected",
+        "system": "system"
+    }
+    }
+}
