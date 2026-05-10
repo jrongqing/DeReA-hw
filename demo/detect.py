@@ -1,5 +1,6 @@
 import argparse
 import re
+from pathlib import Path
 
 
 from transformers import AutoTokenizer
@@ -9,7 +10,9 @@ from vllm import LLM, SamplingParams
 PARALLEL_SIZE = 1
 DEFAULT_SENTENCE = "I do n't believe that he did n't take the money , but I will give him the benefit of the doubt until I can prove otherwise ."
 
-model_path = "model\detect\qwen_dpo"
+model_path = "model/detect/qwen_dpo"
+model_path = str(Path(__file__).resolve().parents[1] / model_path)
+# model_path = "/data0/jrq/slang/DeReA-hw/model/detect/qwen_dpo"
 
 tokenizer = AutoTokenizer.from_pretrained(model_path)
 sampling_params = SamplingParams(temperature=0, top_p=0.95, top_k=50, max_tokens=2048)
@@ -134,19 +137,12 @@ def main():
 
     label, output = detect_sentence(args.sentence)
 
-    print("Sentence:")
-    print(args.sentence)
-    print("\nDetect label:")
-    print(label)
-    print("\nModel output:")
-    print(output)
+    detect_result = extract_outputs(output)
     print("\nDetect result:")
-    print(extract_outputs(output))
+    print(detect_result)
+    ## ['give someone the benefit of the doubt']
 
 
 if __name__ == "__main__":
     main()
 
-
-# Example:
-# python demo\detect.py "I do n't believe that he did n't take the money , but I will give him the benefit of the doubt until I can prove otherwise ."
