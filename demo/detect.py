@@ -12,7 +12,6 @@ DEFAULT_SENTENCE = "I do n't believe that he did n't take the money , but I will
 
 model_path = "model/detect/qwen_dpo"
 model_path = str(Path(__file__).resolve().parents[1] / model_path)
-# model_path = "/data0/jrq/slang/DeReA-hw/model/detect/qwen_dpo"
 
 tokenizer = AutoTokenizer.from_pretrained(model_path)
 sampling_params = SamplingParams(temperature=0, top_p=0.95, top_k=50, max_tokens=2048)
