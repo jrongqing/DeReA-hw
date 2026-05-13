@@ -12,7 +12,7 @@ MO = "DPO"
 N = 645
 
 
-input_file_path = '/data0/jrq/slang/detect/eval/LoML-CN-deal.json'
+input_file_path = 'data\LoML.json'
 output_file_path = 'eval\detect\result\LoML-result.json'
 model_path = 'model\detect\qwen_dpo'
 

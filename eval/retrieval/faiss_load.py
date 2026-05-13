@@ -10,7 +10,7 @@ model_path = "model/retrieval/qwen3-0.6b-finetuned-new/final"
 model = SentenceTransformer(model_path)
 
 
-index = faiss.read_index('/data0/jrq/slang/Link/embedding_train/06B_embedding/index/udKB_index_0.6b.faiss')
+index = faiss.read_index('model\retrieval\index\udKB_index_0.6b.faiss')
 
 
 def get_most_similar_idiom(query,index, k=3):
@@ -19,11 +19,11 @@ def get_most_similar_idiom(query,index, k=3):
     D, I = index.search(query_embedding, k)  
     return I[0], D[0]
 
-with open("/data0/jrq/slang/udKB.json", 'r', encoding='utf-8') as f:
+with open("data\udKB.json", 'r', encoding='utf-8') as f:
     idiom_dict = json.load(f)
 
-input_path = "/data0/jrq/slang/eval/data/detect_hw/LoML-CN-detected.json"
-output_path = "/data0/jrq/slang/eval/data/detect_hw/LoMI-CN-linked.json"
+input_path = "eval\detect\result\detect_result.json"
+output_path = "eval\retrieval\LoML-linked.json"
 
 with open(input_path, "r", encoding="utf-8") as f:
     data = json.load(f)
@@ -38,6 +38,3 @@ for entry in tqdm(data):
 
 with open(output_path, "w", encoding="utf-8") as f:
     json.dump(data, f, ensure_ascii=False, indent=4)
-
-# python eval\retrieval
-# model_path = "/data0/jrq/slang/Link/embedding_train/sentence_transformer/models/qwen3-0.6b-finetuned-new/final"

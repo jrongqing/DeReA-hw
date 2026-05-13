@@ -16,7 +16,7 @@ from urllib.parse import parse_qs, urlparse
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_INPUT = PROJECT_ROOT / "data" / "LoML.json"
-DEFAULT_OUTPUT_DIR = PROJECT_ROOT / "demo_new" / "outputs"
+DEFAULT_OUTPUT_DIR = PROJECT_ROOT / "demo" / "outputs"
 DEFAULT_DETECT_MODEL = PROJECT_ROOT / "model" / "detect" / "qwen_dpo"
 DEFAULT_RETRIEVAL_MODEL = PROJECT_ROOT / "model" / "retrieval" / "qwen3-0.6b-finetuned-new" / "final" / "final"
 DEFAULT_FAISS_INDEX = PROJECT_ROOT / "model" / "retrieval" / "index" / "udKB_index_0.6b.faiss"
